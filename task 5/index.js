@@ -1,5 +1,6 @@
-const width = 8;
-const height = 8;
+const width = 5;
+const height = 5;
+const divider = 1.8;
 
 document.write("<pre>");
 
@@ -33,28 +34,42 @@ document.write("</pre>");
 
 document.write("<pre>");
 
-for (let i = 1, k = width; i <= height; i++) {
-    for (let j = 1; j <= width; j++, k--) {
-        if (i == height) {
+for (let i = 0; i < Math.round(height/divider); i++) {
+    for (let j = 1; j <= height; j++) {
+        if ((j >= ((height + 1) / 2) - i) && j <= (((height + 1) / 2) + i)) {
             document.write("*");
             continue;
         }
-        if (j > 1 && j < height) {
-            document.write(" ");
-        }
-        if ((j == 1 || j == width) && i == height - 1) {
-            document.write("*");
-        }
-        if (j == width/2 && i == 1) {
-            document.write("*");
-            break;
-        }
-        if ((i == height - k || k == height - i)) {
-            document.write("*");
-        }
+        document.write(" ");
     }
-    k = width;
     document.write("<br/>");
 }
+
+document.write("</pre>");
+
+document.write("<pre>");
+
+for (let i = 0; i < Math.round(height/divider); i++) {
+    for (let j = 1; j <= height; j++) {
+        if ((j >= ((height + 1) / 2) - i) && j <= (((height + 1) / 2) + i)) {
+            document.write("*");
+            continue;
+        }
+        document.write(" ");
+    }
+    document.write("<br/>");
+}
+
+for (let i = Math.round(height/divider); i > 1; i--) {
+    for (let j = 0; j <= i; j++) {
+        if ((j >= ((height + 1) / 2) - i + 1) && j <= (((height + 1) / 2) + i - 1)) {
+            document.write("*");
+            continue;
+        }
+        document.write(" ");
+    }
+    document.write("<br/>");
+}
+
 
 document.write("</pre>");
